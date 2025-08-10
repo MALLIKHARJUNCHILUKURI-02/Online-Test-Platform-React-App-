@@ -10,7 +10,7 @@
 - [Notes](#notes)
 
 ***
-
+![Online Test Platform Folder Structure](./ProjectAssets/Online%20Test%20Platform%20Structure1.png)
 ## Project Overview
 
 This platform provides an exam environment where users:
@@ -157,12 +157,6 @@ This runs your frontend on [http://localhost:3000](http://localhost:3000) and wi
 
 ## Backend API Endpoints
 
-Here is the updated excerpt to add in your README.md under the **Backend API Endpoints** section, capturing the routes you listed with URLs and their basic descriptions:
-
-***
-
-## Backend API Endpoints
-
 ### 1. User Registration
 
 - **POST** `http://localhost:5000/api/auth/register`
@@ -294,6 +288,12 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 
 ## Project Demonstration (Videos & Images)
 ![Login successsfull](./ProjectAssets/Login%20successsfull.jpg)
+![Login successsfull](./ProjectAssets/All%20Fields%20Required%20register.jpg)
+![Login successsfull](./ProjectAssets/questions%20fetched.jpg)
+![Login successsfull](./ProjectAssets/submitting%20answers.jpg)
+![Login successsfull](./ProjectAssets/User%20registered%20successfully.jpg)
+![Login successsfull](./ProjectAssets/Login%20successsfull.jpg)
+![Login successsfull](./ProjectAssets/web%20Register%20host3000.jpg)
 [View Demo Video](./ProjectAssets/Online_Test%20Platform%20-%20Made%20with%20Clipchamp.mp4)
 
 ## Notes
