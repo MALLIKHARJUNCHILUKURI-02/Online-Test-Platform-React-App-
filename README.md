@@ -10,7 +10,7 @@
 - [Notes](#notes)
 
 ***
-![Online Test Platform Folder Structure](./ProjectAssets/Online%20Test%20Platform%20Structure1.png)
+![Online Test Platform Folder Structure](./ProjectAssets/FolderStructure.png)
 ## Project Overview
 
 This platform provides an exam environment where users:
