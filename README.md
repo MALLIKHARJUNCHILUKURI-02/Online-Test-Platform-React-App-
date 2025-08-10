@@ -331,7 +331,7 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 ![Login successsfull](./ProjectAssets/User%20registered%20successfully.jpg)
 ![Login successsfull](./ProjectAssets/Login%20successsfull.jpg)
 ![Login successsfull](./ProjectAssets/web%20Register%20host3000.jpg)
-[View Demo Video](./ProjectAssets/Online_Test%20Platform%20-%20Made%20with%20Clipchamp.mp4)
+[View Demo Video](./ProjectAssets/Online_Test%20Platform%20-%20Made%20with%20Clipchamp-c.mp4)
 
 ## Notes
 
