@@ -7,7 +7,7 @@
 - [Running the Application](#running-the-application)
 - [Backend API Endpoints](#backend-api-endpoints)
 - [Frontend Details](#frontend-details)
-- [Project Demonstration (Videos & Images)](#Project-Demonstration-(Videos-&-Images))
+- [Project Demonstration (Videos & Images)](#project-demonstration-videos--images)
 - [Notes](#notes)
 
 ***
