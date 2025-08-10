@@ -7,6 +7,7 @@
 - [Running the Application](#running-the-application)
 - [Backend API Endpoints](#backend-api-endpoints)
 - [Frontend Details](#frontend-details)
+- [Project Demonstration (Videos & Images)](#Project-Demonstration-(Videos-&-Images))
 - [Notes](#notes)
 
 ***
@@ -40,8 +41,44 @@ This platform provides an exam environment where users:
 - Backend: Node.js, Express.js, MongoDB, Mongoose, bcryptjs, jsonwebtoken, CORS
 - Frontend: React.js, Axios, Bootstrap
 - Environment variables managed via `.env`
+This project uses MongoDB Atlas as a secure, cloud‑hosted database to store user data, exam questions, and results. The backend connects to it via the MONGO_URI in the .env file.
 
 ***
+
+## Dependencies
+
+Backend
+```json
+{
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.18.2",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.1"
+  }
+```
+
+Frontend
+
+```json
+{
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.11.0",
+    "bootstrap": "^5.3.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^6.30.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  }
+
+```
 
 ## Setup Instructions
 
@@ -300,6 +337,5 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 
 - JWT token must be included in all protected request headers.
 - Unanswered questions are considered incorrect during scoring.
-- The exam questions are fixed for all users to ensure consistent scoring.
 
 ***

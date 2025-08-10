@@ -1,0 +1,87 @@
+Postman API Testing Instructions
+1. Register a New User
+	Method: POST
+	URL: 	http://localhost:5000/api/auth/register
+	Headers:
+		Content-Type: application/json
+		Body (raw, JSON):
+json
+{
+  "name": "Alice Example",
+  "email": "alice@example.com",
+  "password": "password123"
+}
+	Send the request and check for:
+	Success: { "message": "User registered successfully" }
+	If email exists: { "message": "Email already registered", "redirectTo": "/login" }
+	If missing fields: { "message": "All fields required" }
+
+2. User Login
+	Method: POST
+	URL: 	http://localhost:5000/api/auth/login
+	Headers:
+		Content-Type: application/json
+		Body (raw, JSON):
+json
+{
+  "email": "alice@example.com",
+  "password": "password123"
+}
+	Send the request and check for:
+	Success: returns a JSON with a JWT token and user object.
+	Save the returned token (you will use it in further requests).
+
+3. Fetch Exam Questions
+	Method: GET
+	URL: 	http://localhost:5000/api/exam/questions
+	Headers:
+	Authorization: Bearer <your_token_here>
+		Replace <your_token_here> with the JWT token you got from Login.
+		Send the request and check that you get an array of questions.
+
+4. Submit Exam Answers
+	Method: POST
+	URL: http://localhost:5000/api/exam/submit
+	Headers:
+	Authorization: Bearer <your_token_here>
+			Content-Type: application/json
+			Body (raw, JSON):
+json
+{
+  "answers": {
+    "QUESTION_ID_1": "Selected Option",
+    "QUESTION_ID_2": "Selected Option"
+    // ...more answers as needed
+  }
+}
+	Replace QUESTION_ID_1 and options with actual values from the questions you fetched.
+	Send the request and check for the result:
+	You should get a JSON with score, total, and an array of detailed results per question.
+ 
+Expected Response Example
+json
+{
+  "score": 25,
+  "total": 30,
+  "details": [
+    {
+      "question": "What is the capital of France?",
+      "correctAnswer": "Paris",
+      "givenAnswer": "Paris",
+      "isCorrect": true
+    },
+    {
+      "question": "Who wrote Hamlet?",
+      "correctAnswer": "William Shakespeare",
+      "givenAnswer": "Shakespeare",
+      "isCorrect": true
+    },
+    {
+      "question": "Which planet is closest to the sun?",
+      "correctAnswer": "Mercury",
+      "givenAnswer": "Venus",
+      "isCorrect": false
+    }
+    // ...more questions (total 30 items)
+  ]
+}
