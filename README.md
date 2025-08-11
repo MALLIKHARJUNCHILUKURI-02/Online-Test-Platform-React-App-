@@ -11,7 +11,7 @@
 - [Notes](#notes)
 
 ***
-![Online Test Platform Folder Structure](./ProjectAssets/FolderStructure.png)
+![Online Test Platform Folder Structure](./ProjectAssets/FolderStructureFinal.png)
 ## Project Overview
 
 This platform provides an exam environment where users:
@@ -41,6 +41,8 @@ This platform provides an exam environment where users:
 - Backend: Node.js, Express.js, MongoDB, Mongoose, bcryptjs, jsonwebtoken, CORS
 - Frontend: React.js, Axios, Bootstrap
 - Environment variables managed via `.env`
+
+
 This project uses MongoDB Atlas as a secure, cloud‑hosted database to store user data, exam questions, and results. The backend connects to it via the MONGO_URI in the .env file.
 
 ***
@@ -85,8 +87,8 @@ Frontend
 ### 1. Clone the repository
 
 ```bash
-git clone 
-cd Online_Test_Platform
+git clone https://github.com/MALLIKHARJUNCHILUKURI-02/Online-Test-Platform-React-App-.git
+cd Online-Test-Platform-React-App-
 ```
 
 ### 2. Backend Setup
@@ -331,7 +333,7 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 ![Login successsfull](./ProjectAssets/User%20registered%20successfully.jpg)
 ![Login successsfull](./ProjectAssets/Login%20successsfull.jpg)
 ![Login successsfull](./ProjectAssets/web%20Register%20host3000.jpg)
-[View Demo Video](./ProjectAssets/Online_Test%20Platform%20-%20Made%20with%20Clipchamp-c.mp4)
+[View Demo Video](https://drive.google.com/file/d/1l4p9WDMGrppyyB9lkMA8vufrUmqrCJ9A/view?usp=sharing)
 
 ## Notes
 

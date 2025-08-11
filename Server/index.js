@@ -15,13 +15,6 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/exam', require('./routes/exam'));
 
-// Serve React build
-// app.use(express.static(path.join(__dirname, '../client/build')));
-
-// // Catch-all route (fix for path-to-regexp issue)
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-// });
 app.get('/', (req, res) => {
   res.redirect('http://localhost:3000');
 });
