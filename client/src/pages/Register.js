@@ -1,14 +1,22 @@
+// React core functionality
 import React, { useState } from "react";
+// Axios for HTTP requests
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // for navigation
+// React Router hook for navigation
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  // Form state for user input
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: ""
   });
+
+  // Message state for feedback (success or error)
   const [message, setMessage] = useState("");
+
+    // Navigation hook from React Router
   const navigate = useNavigate();
 
   // Handle input change
@@ -20,17 +28,19 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Send registration data to backend
       const res = await axios.post(
         "http://localhost:5000/api/auth/register",
         formData
       );
 
-      // ✅ Success case
+      // Show success message and redirect to login
       setMessage(res.data.message || "Registration successful!");
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error) {
+      // Handle error and show message
       const msg = error.response?.data?.message || "Registration failed";
       setMessage(msg);
 
@@ -47,6 +57,7 @@ export default function Register() {
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div style={{ maxWidth: "350px" }} className="w-100">
         <h2>Register</h2>
+        {/* Registration Form */}
         <form onSubmit={handleSubmit} className="d-flex flex-column gap-2">
           <input
             name="name"
@@ -76,7 +87,8 @@ export default function Register() {
           </button>
         </form>
 
-        {/* Alert message */}
+        
+        {/* Feedback Message */}
         {message && (
           <div
             className={`alert mt-2 ${
