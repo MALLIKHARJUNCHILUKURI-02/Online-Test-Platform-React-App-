@@ -7,7 +7,7 @@
 - [Running the Application](#running-the-application)
 - [Backend API Endpoints](#backend-api-endpoints)
 - [Example Postman API Requests & Responses](#example-postman-api-requests--responses)
-- [Postman Collection – Import & Usage Instructions](#postman-collection-import-usage)
+- [Postman Collection - Import & Usage Instructions](#postman-collection---import--usage-instructions)
 - [Frontend Details](#frontend-details)
 - [Project Demonstration (Videos & Images)](#project-demonstration-videos--images)
 - [Notes](#notes)
@@ -319,7 +319,7 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 
 ***
 
-## Postman Collection – Import & Usage Instructions
+## Postman Collection - Import & Usage Instructions
 
 A ready‑to‑use Postman collection file is included in the repository:  
 `Online_Test_Platform.postman_collection.json`
