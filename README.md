@@ -319,7 +319,7 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 
 ***
 
-## 📌 Postman Collection – Import & Usage Instructions
+## Postman Collection – Import & Usage Instructions
 
 A ready‑to‑use Postman collection file is included in the repository:  
 `Online_Test_Platform.postman_collection.json`
