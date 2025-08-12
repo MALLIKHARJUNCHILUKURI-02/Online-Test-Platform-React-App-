@@ -104,6 +104,11 @@ npm install
 MONGO_URI=
 JWT_SECRET=
 PORT=5000
+
+MONGO_URI=<your-mongodb-atlas-connection-string>
+JWT_SECRET=<your-secret-key>
+PORT=5000
+
 ```
 
 - Start the backend server:
