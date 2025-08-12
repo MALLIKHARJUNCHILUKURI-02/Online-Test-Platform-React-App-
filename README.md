@@ -7,7 +7,7 @@
 - [Running the Application](#running-the-application)
 - [Backend API Endpoints](#backend-api-endpoints)
 - [Example Postman API Requests & Responses](#example-postman-api-requests--responses)
-- [Postman Collection – Import & Usage Instructions](#postman-collection--import--usage-instructions)
+- [Postman Collection – Import & Usage Instructions](#postman-collection-import-usage)
 - [Frontend Details](#frontend-details)
 - [Project Demonstration (Videos & Images)](#project-demonstration-videos--images)
 - [Notes](#notes)
@@ -316,17 +316,6 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
   ]
 }
 ```
-
-***
-
-
-Got it ✅ — you want to update your README so that after your **Example Postman API Requests & Responses** section, you include a **new section** explaining:
-
-- That you’ve included the `Online_Test_Platform.postman_collection.json` file in your repo  
-- How someone can **import it into Postman**  
-- How to run the requests inside Postman  
-
-Here’s the section you can directly add to your README (right after the Example Postman section, before “Frontend Details”):
 
 ***
 
