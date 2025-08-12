@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "4fb2feea-07ae-4dc7-a159-49f573fff1e0",
+		"name": "Online Test Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41846671"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/api/auth/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Your Name\",\r\n  \"email\": \"your.email@example.com\",\r\n  \"password\": \"yourpassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "**Title:** Register a New User\n\n**Method:** `POST`  \n**URL:** `http://localhost:5000/api/auth/register`\n\n**Purpose:**  \n  \nThis API endpoint is used to create a new user account in the Online Test Platform.  \n  \nIt accepts a **name**, **email**, and **password** in JSON format and stores the encrypted password in MongoDB.\n\n**Request Headers:**\n\n- `Content-Type: application/json`\n    \n\n**Request Body (raw → JSON):**\n\n```\njson{\n  \"name\": \"Alice Example\",\n  \"email\": \"alice@example.com\",\n  \"password\": \"password123\"\n}\n\n ```\n\n**Success Response Example:**\n\n```\njson{\n  \"message\": \"User registered successfully\"\n}\n\n ```\n\n**Error Responses:**\n\n- If email is already registered:\n    \n\n```\njson{\n  \"message\": \"Email already registered\",\n  \"redirectTo\": \"/login\"\n}\n\n ```\n\n- If required fields are missing:\n    \n\n```\njson{\n  \"message\": \"All fields required\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/exam/questions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTgxYmU1ZDc4ZWVhMmIyNDVhYTcxMSIsImVtYWlsIjoieW91ci5lbWFpbEBleGFtcGxlLmNvbSIsImlhdCI6MTc1NDc5OTI1NCwiZXhwIjoxNzU0ODAyODU0fQ.d0ulQ6QC8jegJMgE0g4tM9-YNEulMyi0zGKG43sSHc8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/exam/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"exam",
+						"questions"
+					]
+				},
+				"description": "**Title:** Fetch Exam Questions\n\n**Method:** GET  \n**URL:** `http://localhost:5000/api/exam/questions`\n\n**Purpose:**  \n  \nThis API endpoint fetches the fixed set of 30 exam questions for the authenticated user. Only logged-in users with a valid JWT token can access this route.\n\n**Request Headers:**\n\n- `Authorization: Bearer`  \n      \n    Replace with the token obtained from the login response.\n    \n\n**Success Response Example:**\n\n```\njson[\n  {\n    \"_id\": \"questionId1\",\n    \"question\": \"What is the capital of France?\",\n    \"options\": [\"Paris\", \"London\", \"Berlin\", \"Madrid\"]\n  },\n  {\n    \"_id\": \"questionId2\",\n    \"question\": \"Who wrote Hamlet?\",\n    \"options\": [\"William Shakespeare\", \"Charles Dickens\", \"Jane Austen\", \"Mark Twain\"]\n  }\n  // ...28 more questions\n]\n\n ```\n\n**Error Responses:**\n\n- If the token is missing or invalid, you may receive:\n    \n\n```\njson{\n  \"message\": \"Unauthorized\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/auth/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"your.email@example.com\",\r\n  \"password\": \"yourpassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "**Title:** User Login\n\n**Method:** `POST`  \n**URL:** `http://localhost:5000/api/auth/login`\n\n**Purpose:**  \n  \nThis API endpoint authenticates a registered user using their email and password.  \n  \nIf the credentials are valid, it returns a **JWT token** along with basic user information. This token must be sent in the `Authorization` header when accessing protected routes.\n\n---\n\n**Request Headers:**\n\n- `Content-Type: application/json`\n    \n\n**Request Body (raw → JSON):**\n\n```\njson{\n  \"email\": \"alice@example.com\",\n  \"password\": \"password123\"\n}\n\n ```\n\n---\n\n**Success Response Example:**\n\n```\njson{\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"user\": {\n    \"id\": \"64f3ca8a89ab7654d3e01333\",\n    \"name\": \"Alice Example\",\n    \"email\": \"alice@example.com\"\n  }\n}\n\n ```\n\n---\n\n**Error Responses:**\n\n- Invalid credentials:\n    \n\n```\njson{\n  \"message\": \"Invalid email or password\"\n}\n\n ```\n\n- Missing required fields:\n    \n\n```\njson{\n  \"message\": \"All fields required\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/exam/submit",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTgxYmU1ZDc4ZWVhMmIyNDVhYTcxMSIsImVtYWlsIjoieW91ci5lbWFpbEBleGFtcGxlLmNvbSIsImlhdCI6MTc1NDc5OTI1NCwiZXhwIjoxNzU0ODAyODU0fQ.d0ulQ6QC8jegJMgE0g4tM9-YNEulMyi0zGKG43sSHc8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"answers\": {\r\n    \"6896df4f823cb9da6ef1cd4b\": \"list-style-type: square;\",\r\n    \"6896df4f823cb9da6ef1cd9c\": \"1 and 2 are both used\",\r\n    \"6896df4f823cb9da6ef1cd95\": \"app.middleware(middlewareFunc)\",\r\n    \"6896df4f823cb9da6ef1cd82\": \"Function scope\",\r\n    \"6896df4f823cb9da6ef1cd72\": \"Using props\",\r\n    \"6896df4f823cb9da6ef1cd56\": \"Not a number\",\r\n    \"6896df4f823cb9da6ef1cd86\": \"A Node.js web application framework\",\r\n    \"6896df4f823cb9da6ef1cd81\": \"Both 1 and 2\",\r\n    \"6896df4f823cb9da6ef1cd65\": \"To style list items\",\r\n    \"6896df4f823cb9da6ef1cd4c\": \"padding\",\r\n    \"6896df4f823cb9da6ef1cd8c\": \"req.params\",\r\n    \"6896df4f823cb9da6ef1cd85\": \"All of the above\",\r\n    \"6896df4f823cb9da6ef1cd8f\": \"app.post()\",\r\n    \"6896df4f823cb9da6ef1cd42\": \"background-color\",\r\n    \"6896df4f823cb9da6ef1cd62\": \"Character\",\r\n    \"6896df4f823cb9da6ef1cd76\": \"fs.readFile()\",\r\n    \"6896df4f823cb9da6ef1cd8d\": \"404\",\r\n    \"6896df4f823cb9da6ef1cd9f\": \"db.collection.add()\",\r\n    \"6896df4f823cb9da6ef1cd84\": \"A function that executes during the request-response cycle to modify request or response\",\r\n    \"6896df4f823cb9da6ef1cd74\": \"Using lazy loading and memoization\",\r\n    \"6896df4f823cb9da6ef1cd9e\": \"All of the above\",\r\n    \"6896df4f823cb9da6ef1cd36\": \"<pic>\",\r\n    \"6896df4f823cb9da6ef1cd94\": \"Collections and documents\",\r\n    \"6896df4f823cb9da6ef1cd6d\": \"useEvent\",\r\n    \"6896df4f823cb9da6ef1cda1\": \"const schema = new mongoose.Schema({})\",\r\n    \"6896df4f823cb9da6ef1cd53\": \"== checks only value; === checks type and value\",\r\n    \"6896df4f823cb9da6ef1cd73\": \"Stores a mutable reference to a DOM element or any value across renders\",\r\n    \"6896df4f823cb9da6ef1cd96\": \"Relational Database\",\r\n    \"6896df4f823cb9da6ef1cd58\": \"new Promise()\",\r\n    \"6896df4f823cb9da6ef1cd5e\": \"render()\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/exam/submit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"exam",
+						"submit"
+					]
+				},
+				"description": "**Title:** Submit Exam Answers\n\n**Method:** `POST`  \n**URL:** `http://localhost:5000/api/exam/submit`\n\n---\n\n**Purpose:**  \n  \nThis endpoint submits a user’s answers for grading.  \n  \nIt requires:\n\n- A valid **JWT token** in the `Authorization` header (user must be logged in).\n    \n- A JSON body mapping **question IDs** to the **selected answer options**.  \n      \n    The backend calculates the score and returns detailed results.\n    \n\n---\n\n**Request Headers:**\n\n- `Authorization: Bearer`  \n    _(Replace_ _with the token from Login.)_\n    \n- `Content-Type: application/json`\n    \n\n---\n\n**Request Body (raw → JSON):**\n\n```\njson{\n  \"answers\": {\n    \"QUESTION_ID_1\": \"Selected Option\",\n    \"QUESTION_ID_2\": \"Selected Option\"\n  }\n}\n\n ```\n\n> \n\nReplace `QUESTION_ID_1`, `QUESTION_ID_2`, and `\"Selected Option\"` with actual IDs and selected answers from the **GET /api/exam/questions** response.\n\n \n  \n\n---\n\n**💡 Suggestion for Testing:**  \n  \nYou can copy the **questions and options** from the `/api/exam/questions` response and paste them into a tool like **ChatGPT**.  \n  \nAsk it to **generate a mix of right and wrong answers** in the same `{ \"questionId\": \"Selected Option\" }` JSON format.  \n  \nThen, take that generated JSON and **paste it directly into your Postman request body** to simulate a realistic exam submission.\n\n---\n\n**Success Response Example:**\n\n```\njson{\n  \"score\": 25,\n  \"total\": 30,\n  \"details\": [\n    {\n      \"question\": \"What is the capital of France?\",\n      \"correctAnswer\": \"Paris\",\n      \"givenAnswer\": \"Paris\",\n      \"isCorrect\": true\n    },\n    {\n      \"question\": \"Who wrote Hamlet?\",\n      \"correctAnswer\": \"William Shakespeare\",\n      \"givenAnswer\": \"Shakespeare\",\n      \"isCorrect\": true\n    }\n  ]\n}\n\n ```\n\n---\n\n**Error Responses:**\n\n- **Missing or invalid token:**\n    \n\n```\njson{\n  \"message\": \"Unauthorized\"\n}\n\n ```\n\n- **Missing answer data:**\n    \n\n```\njson{\n  \"message\": \"Answers are required\"\n}\n\n ```"
+			},
+			"response": []
+		}
+	]
+}

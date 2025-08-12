@@ -6,6 +6,8 @@
 - [Setup Instructions](#setup-instructions)
 - [Running the Application](#running-the-application)
 - [Backend API Endpoints](#backend-api-endpoints)
+- [Example Postman API Requests & Responses](#example-postman-api-requests--responses)
+- [Postman Collection – Import & Usage Instructions](#postman-collection--import--usage-instructions)
 - [Frontend Details](#frontend-details)
 - [Project Demonstration (Videos & Images)](#project-demonstration-videos--images)
 - [Notes](#notes)
@@ -101,10 +103,6 @@ npm install
 - Create a `.env` file in the `Server` folder with:
 
 ```
-MONGO_URI=
-JWT_SECRET=
-PORT=5000
-
 MONGO_URI=<your-mongodb-atlas-connection-string>
 JWT_SECRET=<your-secret-key>
 PORT=5000
@@ -232,6 +230,7 @@ Fetches the fixed set of 30 exam questions for the authenticated user. Requires 
 Submits the user's answers to the exam questions for grading. Requires an `Authorization` header with a Bearer token and a JSON body with the answers mapping question IDs to selected options.
 
 ***
+### Example Postman API Requests & Responses
 
 ### 1. Register
 
@@ -320,6 +319,56 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 
 ***
 
+
+Got it ✅ — you want to update your README so that after your **Example Postman API Requests & Responses** section, you include a **new section** explaining:
+
+- That you’ve included the `Online_Test_Platform.postman_collection.json` file in your repo  
+- How someone can **import it into Postman**  
+- How to run the requests inside Postman  
+
+Here’s the section you can directly add to your README (right after the Example Postman section, before “Frontend Details”):
+
+***
+
+## 📌 Postman Collection – Import & Usage Instructions
+
+A ready‑to‑use Postman collection file is included in the repository:  
+`Online_Test_Platform.postman_collection.json`
+
+This collection contains all API requests for:
+
+- **Register**
+- **Login**
+- **Fetch Exam Questions**
+- **Submit Exam Answers** (with testing tips)
+
+### 1️⃣ Import the Collection in Postman
+
+1. **Open Postman** on your computer.
+2. Click the **Import** button (top‑left corner).
+3. In the popup, select the **File** tab.
+4. Click **Upload Files** and choose the file:  
+   `Online_Test_Platform.postman_collection.json` from your cloned repo.
+5. Click **Import** — the collection will now appear in your **Collections** sidebar.
+
+### 2️⃣ Running the API Requests
+
+1. **Register** a new user using the `POST /api/auth/register` request.
+2. **Login** using the `POST /api/auth/login` request and **copy the JWT token** from the response.
+3. For the `GET /api/exam/questions` and `POST /api/exam/submit` requests:  
+   - Go to the **Authorization** tab  
+   - Choose **Bearer Token**  
+   - Paste the copied token into the token field.
+4. Click **Send** to execute the request and see the API response.
+
+### 3️⃣ Optional – Using the Suggestion in Submit Route
+In the **Submit Exam Answers** request description, you’ll find a tip on:
+- Copying the questions from `/api/exam/questions`
+- Asking a tool like **ChatGPT** to generate a mix of correct and incorrect answers in JSON format
+- Pasting that JSON directly into the request body for realistic testing
+
+***
+
 ## Frontend Details
 
 - React app manages user authentication state and token storage.
@@ -332,12 +381,12 @@ Submits the user's answers to the exam questions for grading. Requires an `Autho
 
 ## Project Demonstration (Videos & Images)
 ![Login successsfull](./ProjectAssets/Login%20successsfull.jpg)
-![Login successsfull](./ProjectAssets/All%20Fields%20Required%20register.jpg)
-![Login successsfull](./ProjectAssets/questions%20fetched.jpg)
-![Login successsfull](./ProjectAssets/submitting%20answers.jpg)
-![Login successsfull](./ProjectAssets/User%20registered%20successfully.jpg)
+![All Fields Required register](./ProjectAssets/All%20Fields%20Required%20register.jpg)
+![questions fetched](./ProjectAssets/questions%20fetched.jpg)
+![submitting answers](./ProjectAssets/submitting%20answers.jpg)
+![User registered successfully](./ProjectAssets/User%20registered%20successfully.jpg)
 ![Login successsfull](./ProjectAssets/Login%20successsfull.jpg)
-![Login successsfull](./ProjectAssets/web%20Register%20host3000.jpg)
+![web Register host3000](./ProjectAssets/web%20Register%20host3000.jpg)
 [View Demo Video](https://drive.google.com/file/d/1l4p9WDMGrppyyB9lkMA8vufrUmqrCJ9A/view?usp=sharing)
 
 ## Notes
